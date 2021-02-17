@@ -22,6 +22,6 @@ conta2.agencia = 102;
 
 /* Transferindo dinheiro para conta 2*/
 let valor = 200;
-contaCorrenteRicardo.transferir(valor,conta2);
+contaCorrenteRicardo.transferir(valor, conta2);
 
-console.log(conta2);
+console.log(conta2.cliente);
