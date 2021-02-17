@@ -2,8 +2,10 @@ import { Cliente } from "./Cliente.js";
 
 export class ContaCorrente {
     agencia;
-    _cliente;
 
+    static qtd = 0; //Trabalhando com atributo estático
+
+    _cliente;
     _saldo = 0;
 
     set cliente(novovalor) {
@@ -18,6 +20,13 @@ export class ContaCorrente {
 
     get saldo() {
         return this._saldo;
+    }
+
+    constructor (cliente, agencia){
+        
+        this.cliente = cliente;
+        this.agencia = agencia;
+        ContaCorrente.qtd+=1;
     }
 
     sacar(valor) {
