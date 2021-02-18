@@ -1,50 +1,18 @@
-import { Cliente } from "./Cliente.js";
+import { Conta } from "./Conta.js";
 
-export class ContaCorrente {
-    agencia;
+export class ContaCorrente extends Conta {
 
     static qtd = 0; //Trabalhando com atributo estático
 
-    _cliente;
-    _saldo = 0;
-
-    set cliente(novovalor) {
-        if (novovalor instanceof Cliente) {
-            this._cliente = novovalor;
-        }
+    constructor(cliente, agencia) {
+        super(0, cliente, agencia);
+        ContaCorrente.qtd += 1;
     }
 
-    get cliente() {
-        return this._cliente;
-    }
-
-    get saldo() {
-        return this._saldo;
-    }
-
-    constructor (cliente, agencia){
-        
-        this.cliente = cliente;
-        this.agencia = agencia;
-        ContaCorrente.qtd+=1;
-    }
-
+    //Sobrescrevendo o método sacar
     sacar(valor) {
-        if (this._saldo >= valor) {
-            this._saldo -= valor;
-            return valor;
-        }
+        let taxa = 1.1;
+        return this._sacar(valor, taxa);
     }
 
-    depositar(valor) {
-        if (valor <= 0) {
-            return;
-        }
-        this._saldo += valor;
-    }
-
-    transferir(valor, conta) {
-        const valorsacado = this.sacar(valor);
-        conta.depositar(valorsacado);
-    }
 }
