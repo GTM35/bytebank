@@ -1,5 +1,8 @@
 export class Conta {
     constructor(saldoInicial, cliente, agencia) {
+        if (this.constructor == Conta) {
+            throw new Error("Error Classe Abstrata - Instância");
+        }
         this._saldo = saldoInicial;
         this._cliente = cliente;
         this._agencia = agencia;
@@ -22,8 +25,7 @@ export class Conta {
 
     sacar(valor) {
 
-        let taxa = 1;
-        return this._sacar(valor, taxa);
+        throw Error("Método Abstrato")
     }
     _sacar(valor, taxa) {
         const valorsacado = taxa * valor;
@@ -46,6 +48,4 @@ export class Conta {
         const valorsacado = this.sacar(valor);
         conta.depositar(valorsacado);
     }
-
-
 }
