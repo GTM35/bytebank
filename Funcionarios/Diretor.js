@@ -1,6 +1,6 @@
 import { Funcionarios } from "./Funcionario.js";
 
-export class Gerente extends Funcionarios {
+export class Diretor extends Funcionarios {
 
     constructor(nome, salario, cpf) {
         super(nome, salario, cpf);
